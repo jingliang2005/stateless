@@ -40,16 +40,18 @@
             }
 
             /// <summary>
+            /// 状态从转变。
             /// The state transitioned from.
             /// </summary>
             public TState Source { get; }
 
             /// <summary>
-            /// The state transitioned to.
+            /// 状态过渡到。The state transitioned to.
             /// </summary>
             public TState Destination { get; }
 
             /// <summary>
+            /// 导致过渡的触发器。
             /// The trigger that caused the transition.
             /// </summary>
             public TTrigger Trigger { get; }
@@ -60,9 +62,10 @@
             public bool IsReentry => Source.Equals(Destination);
 
             /// <summary>
-            /// The trigger parameters
+            /// 触发参数 The trigger parameters
             /// </summary>
             /// <remarks>
+            /// 永远不会为空。 对于无参数触发器，该值将为空数组。
             /// Never null. For a parameterless trigger the value will be an empty array.
             /// </remarks>
             public object[] Parameters { get; }

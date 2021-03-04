@@ -33,12 +33,14 @@ namespace Stateless
             public StateMachine<TState, TTrigger> Machine { get { return _machine; } }
 
             /// <summary>
+            /// 接受指定的触发器并转换到目标状态。
             /// Accept the specified trigger and transition to the destination state.
             /// </summary>
-            /// <param name="trigger">The accepted trigger.</param>
-            /// <param name="destinationState">The state that the trigger will cause a
+            /// <param name="trigger">可接受的触发器。The accepted trigger.</param>
+            /// <param name="destinationState"> 触发器将导致过渡到的状态
+            /// The state that the trigger will cause a
             /// transition to.</param>
-            /// <returns>The receiver.</returns>
+            /// <returns>收件人。The receiver.</returns>
             public StateConfiguration Permit(TTrigger trigger, TState destinationState)
             {
                 EnforceNotIdentityTransition(destinationState);
@@ -46,7 +48,9 @@ namespace Stateless
             }
 
             /// <summary>
-            /// Add an internal transition to the state machine. An internal action does not cause the Exit and Entry actions to be triggered, and does not change the state of the state machine
+            /// 将内部转换添加到状态机。 内部操作不会导致退出和进入操作被触发，并且不会更改状态机的状态
+            /// Add an internal transition to the state machine. An internal action does not 
+            /// cause the Exit and Entry actions to be triggered, and does not change the state of the state machine
             /// </summary>
             /// <param name="trigger"></param>
             /// <param name="entryAction"></param>
@@ -865,6 +869,7 @@ namespace Stateless
             }
 
             /// <summary>
+            /// 指定在转换为已配置状态时将执行的操作。状态转入前？
             /// Specify an action that will execute when transitioning into
             /// the configured state.
             /// </summary>
@@ -942,6 +947,7 @@ namespace Stateless
             }
 
             /// <summary>
+            /// 指定在转换为已配置状态时将执行的操作。
             /// Specify an action that will execute when transitioning into
             /// the configured state.
             /// </summary>
@@ -1099,6 +1105,7 @@ namespace Stateless
             }
 
             /// <summary>
+            /// 指定从配置状态过渡时将执行的操作。状态转出？
             /// Specify an action that will execute when transitioning from
             /// the configured state.
             /// </summary>
@@ -1114,6 +1121,7 @@ namespace Stateless
             }
 
             /// <summary>
+            /// 将超级状态设置为已配置状态的子状态。
             /// Sets the superstate that the configured state is a substate of.
             /// </summary>
             /// <remarks>

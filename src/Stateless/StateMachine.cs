@@ -180,6 +180,7 @@ namespace Stateless
         }
 
         /// <summary>
+        /// 当状态机处于特定状态时，开始配置进入/退出操作和允许的转换。
         /// Begin configuration of the entry/exit actions and allowed transitions
         /// when the state machine is in a particular state.
         /// </summary>
@@ -191,13 +192,17 @@ namespace Stateless
         }
 
         /// <summary>
+        /// 通过指定的触发器从当前状态过渡。 目标状态由当前状态的配置确定。 
+        /// 与退出当前状态并进入新状态有关的动作将被调用。
         /// Transition from the current state via the specified trigger.
         /// The target state is determined by the configuration of the current state.
         /// Actions associated with leaving the current state and entering the new one
         /// will be invoked.
         /// </summary>
-        /// <param name="trigger">The trigger to fire.</param>
-        /// <exception cref="System.InvalidOperationException">The current state does
+        /// <param name="trigger">扳机触发。The trigger to fire.</param>
+        /// <exception cref="System.InvalidOperationException">
+        /// 当前状态不允许触发触发器。
+        /// The current state does
         /// not allow the trigger to be fired.</exception>
         public void Fire(TTrigger trigger)
         {
@@ -563,11 +568,13 @@ namespace Stateless
         }
 
         /// <summary>
+        /// 指定触发特定触发器时必须提供的参数。
         /// Specify the arguments that must be supplied when a specific trigger is fired.
         /// </summary>
-        /// <typeparam name="TArg0">Type of the first trigger argument.</typeparam>
-        /// <param name="trigger">The underlying trigger value.</param>
-        /// <returns>An object that can be passed to the Fire() method in order to
+        /// <typeparam name="TArg0">第一个触发器参数的类型。Type of the first trigger argument.</typeparam>
+        /// <param name="trigger">基础触发值。The underlying trigger value.</param>
+        /// <returns> 可以传递给Fire（）方法以触发参数化触发器的对象。
+        /// An object that can be passed to the Fire() method in order to
         /// fire the parameterised trigger.</returns>
         public TriggerWithParameters<TArg0> SetTriggerParameters<TArg0>(TTrigger trigger)
         {
@@ -577,6 +584,7 @@ namespace Stateless
         }
 
         /// <summary>
+        /// 指定触发特定触发器时必须提供的参数。
         /// Specify the arguments that must be supplied when a specific trigger is fired.
         /// </summary>
         /// <typeparam name="TArg0">Type of the first trigger argument.</typeparam>
@@ -631,6 +639,7 @@ namespace Stateless
         }
 
         /// <summary>
+        /// 注册一个回调，该回调将在每次状态机从一种状态转换为另一种状态时调用。
         /// Registers a callback that will be invoked every time the state machine
         /// transitions from one state into another.
         /// </summary>
